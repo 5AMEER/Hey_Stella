@@ -13,6 +13,11 @@ function App() {
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
+    // Scroll to top on page load
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'skills', 'projects', 'contact']
       const scrollPosition = window.scrollY + 100
