@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
 import './Chatbot.css'
 
+/*
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([])
@@ -90,6 +91,13 @@ const Chatbot = () => {
       )}
     </>
   )
+}
+
+export default Chatbot
+*/
+
+const Chatbot = () => {
+  return null
 }
 
 export default Chatbot
