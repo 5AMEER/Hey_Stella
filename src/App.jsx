@@ -13,8 +13,12 @@ function App() {
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
-    // Scroll to top on page load
-    window.scrollTo(0, 0)
+    // Scroll to top on page load with a small delay
+    const scrollTimer = setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }, 0)
+
+    return () => clearTimeout(scrollTimer)
   }, [])
 
   useEffect(() => {
