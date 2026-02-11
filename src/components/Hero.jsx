@@ -101,7 +101,7 @@ const Hero = () => {
         </div>
         <div className={`hero-image ${isVisible ? 'visible' : ''}`}>
           <ProfileCard
-            avatarUrl="/images/profile.jpg"
+            avatarUrl="/Hey_Stella/images/profile.jpg"
             name="Sameer Arora"
             title="Software Engineer"
             handle="5AMEER"

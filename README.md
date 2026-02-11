@@ -46,7 +46,7 @@ The built files will be in the `dist` directory.
 npm run preview
 ```
 
-## Customization
+## 🎨 Customization
 
 ### Update Personal Information
 
@@ -74,10 +74,8 @@ npm run preview
 ### Styling
 
 - Main color scheme is defined in `src/index.css` under `:root` variables
-- Each component has its own CSS file for easy customization
-- Primary accent color: `#64ffda` (teal/cyan)
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 portfolio/
@@ -111,3 +109,4 @@ portfolio/
 
 This project is open source and available under the MIT License.
 
+<img src="/images/image.png" alt="Chatbot Icon" className="chatbot-icon" />

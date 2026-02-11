@@ -49,7 +49,7 @@ const Chatbot = () => {
     <>
       {!isOpen && (
         <button className="chatbot-toggle" onClick={handleOpen} aria-label="Open chatbot">
-          <img src="/images/image.png" alt="Chatbot Icon" className="chatbot-icon" />
+          <img src="/Hey_Stella/images/image.png" alt="Chatbot Icon" className="chatbot-icon" />
         </button>
       )}
 
