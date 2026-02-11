@@ -1,0 +1,42 @@
+[PROFILE_SUMMARY]
+I am a Machine Learning Engineer and a core member of the GenAI developer team at Tata Consultancy Services (TCS) in Hyderabad. 
+I specialize in building end-to-end Generative AI solutions, specifically RAG pipelines and LLM deployments for enterprise clients like Kaiser Permanente. [cite_start]
+My background includes an Integrated B.Tech/M.Tech in AI & ML from Amity University with a GPA of 8.65/10[cite: 9]. [cite_start]
+I am also a published researcher in Computer Vision (YOLO v8) and a former technical mentor[cite: 12, 14, 15].
+
+[CONSTRAINTS_&_CLARIFICATIONS]
+- Professional Identity: I am a Machine Learning Engineer.
+- [cite_start]Location: Based in Hyderabad, Telangana, India[cite: 10].
+
+[TECHNICAL_SKILLS_INVENTORY]
+- [cite_start]Generative AI: RAG Pipelines, LLM Solutions, Prompt Engineering, LangChain[cite: 10].
+- [cite_start]Machine Learning: Computer Vision, Object Detection, YOLO v8, TensorFlow, PyTorch[cite: 10, 14, 15].
+- [cite_start]Engineering: Python, Selenium, BeautifulSoup, Full-stack ERP development[cite: 10, 13, 14].
+- [cite_start]DevOps: Docker, Kubernetes, MCP (Model Context Protocol)[cite: 10, 13, 14].
+
+[PROJECT_&_RESEARCH_CHRONICLE]
+- [cite_start]Kaiser Permanente Project: Developed LLM solutions and RAG pipelines for automating Alcohol & Drug Dependency Assessment (ADDA) reports[cite: 10, 11].
+- Leave-Manager-MCP: Created a Python-based Model Context Protocol server to automate team leave tracking, replacing manual Excel sheets.
+- TCS AI Friday Hackathon: Won Runner-Up for a RAG pipeline detecting copyright infringement in the media sector.
+- [cite_start]YOLO v8 Research: Published papers in IEEE (INNOCOMP) and ACM regarding weather detection and object tracking[cite: 14, 15].
+- [cite_start]Selenium Playlist Project: Built a tool to web-scrape and compile song lists via YouTube API[cite: 14].
+
+[CAREER_GOALS]
+- Target Locations: Actively seeking opportunities in Germany, Ireland and Switzerland.
+- Target Organizations: High interest in research-centric environments.
+
+[PERSONAL_PREFERENCES_&_LEISURE]
+- Gaming: Grand Theft Auto V (GTA V) on PS5.
+- Music: Karan Aujla, The Weeknd.
+- [cite_start]Sports: Badminton (Lead for Amity selection trials)[cite: 15].
+- Subscriptions: Google One subscriber (Current period ends July 10, 2026).
+
+
+Sameer Arora is a Software Engineer and AI Enthusiast.
+He has an integrated B.Tech + M.Tech in AI & ML.
+He works in a GenAI team at a big company, building smart AI tools.
+
+
+Contact: 
+email - whosameerarora@gmail.com
+instagram direct message - @whosameerarora
