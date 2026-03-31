@@ -5,6 +5,12 @@ export default defineConfig({
   plugins: [react()],
   base: '/Hey_Stella/',
   server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8787',
+        changeOrigin: true
+      }
+    },
     hmr: true,
     watch: {
       usePolling: false

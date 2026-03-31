@@ -12,11 +12,38 @@
 }
 
 .aichat-container h2 {
-  text-align: center;
   font-size: 32px;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   color: var(--lightest-slate);
   font-weight: 700;
+}
+
+.aichat-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.aichat-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  color: #fbbf24;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.aichat-status-text {
+  margin: 0 0 28px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--slate);
 }
 
 .chat-interface {
@@ -220,7 +247,17 @@
 
   .aichat-container h2 {
     font-size: 24px;
-    margin-bottom: 30px;
+  }
+
+  .aichat-heading-row {
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .aichat-status-text {
+    font-size: 12px;
+    margin-bottom: 20px;
   }
 
   .chat-interface {

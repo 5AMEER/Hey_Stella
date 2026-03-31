@@ -1,6 +1,8 @@
 .skills {
   padding: 100px 20px;
   background-color: var(--secondary-color);
+  position: relative;
+  overflow: hidden;
 }
 
 .skills-grid {
@@ -64,6 +66,85 @@
   font-size: 16px;
   color: var(--light-slate);
   font-weight: 500;
+}
+
+.ticker {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ticker-row {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: scroll 55s linear infinite;
+  width: max-content; /* Ensure the row can expand to fit all items */
+}
+
+.ticker-row-right {
+  animation-direction: reverse;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  margin: 0px 10px;
+  background-color: var(--light-navy);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: var(--light-slate);
+  font-weight: 500;
+  font-size: 16px;
+  transition: var(--transition);
+  flex-shrink: 0; /* Prevent items from shrinking */
+}
+
+.ticker-item:hover {
+  transform: scale(1.1);
+  background-color: var(--lightest-navy);
+}
+
+.ticker-icon {
+  font-size: 24px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Adjusted to scroll half the width for seamless looping */
+  }
+}
+
+.skills::before,
+.skills::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.skills::before {
+  left: 0;
+  background: linear-gradient(to right, var(--secondary-color), transparent);
+}
+
+.skills::after {
+  right: 0;
+  background: linear-gradient(to left, var(--secondary-color), transparent);
+}
+
+.ticker-row:hover {
+  animation-play-state: paused;
 }
 
 @media (max-width: 768px) {

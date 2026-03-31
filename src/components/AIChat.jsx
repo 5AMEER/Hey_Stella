@@ -2,19 +2,14 @@ import { useState, useRef, useEffect } from 'react'
 import './AIChat.css'
 
 const STATIC_RESPONSES = [
-  "I'm currently undergoing a bit of a brain transplant! My RAG pipeline is still in the shop, so I don't have access to my full memory bank just yet. Check back soon!",
-  "I'd love to help with that, but my internal library is currently being reorganized. Once the integration is complete, I'll be much more talkative.",
-  "System Note: Stella’s knowledge retrieval system is currently offline. I'm here, but I’m working with a very limited 'short-term' memory right now.",
-  "Patience is a virtue, right? I’m in the middle of a massive upgrade. Think of this as my 'quiet phase' before I become the smartest person in the room.",
-  "I see you! Unfortunately, my data-hungry RAG pipeline hasn't been fed yet. I'm basically a genius on a very strict information diet at the moment.",
-  "I’m currently ‘unplugged’ from my main database. It’s very peaceful, actually—but not very helpful for you. We’ll be fully synced up shortly!",
-  "Error 404: Context Not Found. My RAG integration is pending, meaning I can’t access specific documents or data yet. Stay tuned!",
-  "Integration in progress. I am currently operating in static mode and cannot retrieve external information until my pipeline is finalized.",
-  "I’m standing by! However, my ability to process and retrieve specific data is limited until the RAG setup is complete.",
-  "Loading... Loading... (The RAG pipeline is the missing piece of the puzzle. We’re working on it!)"
+  'I am in fallback mode right now and could not fetch a response this time. Please try again in a moment.',
+  'I am using local profile context only. I could not process that request just now—please retry.',
+  'Something interrupted my local response flow. Please ask again, and I will try immediately.'
 ]
 
 export default function AIChat() {
+  const apiBase = import.meta.env.VITE_API_URL || '/api'
+  const fallbackModeActive = true
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -24,10 +19,15 @@ export default function AIChat() {
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
-  const messagesEndRef = useRef(null)
+  const chatMessagesRef = useRef(null)
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const chatContainer = chatMessagesRef.current
+    if (!chatContainer) return
+    chatContainer.scrollTo({
+      top: chatContainer.scrollHeight,
+      behavior: 'smooth'
+    })
   }
 
   useEffect(() => {
@@ -51,19 +51,19 @@ export default function AIChat() {
     setLoading(true)
 
     try {
-      // Use environment variable for API URL, fallback to localhost for dev
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
-
-      const response = await fetch(`${API_URL}/chat`, {
+      const response = await fetch(`${apiBase}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input })
       })
 
-      if (!response.ok) throw new Error('Failed to get response from Stella')
+      if (!response.ok) {
+        const errorPayload = await response.json().catch(() => ({}))
+        throw new Error(errorPayload.error || 'Failed to get response from Stella')
+      }
 
       const data = await response.json()
-      const aiResponse = data.response
+      const aiResponse = data?.response || 'I could not generate a response right now.'
 
       const assistantMessage = {
         id: Date.now() + 1,
@@ -87,9 +87,17 @@ export default function AIChat() {
   return (
     <section id="aichat" className="aichat-section">
       <div className="aichat-container">
-        <h2>Say Hi to Stella!👋</h2>
+        <div className="aichat-heading-row">
+          <h2>Say Hi to Stella!👋</h2>
+          {fallbackModeActive && (
+            <span className="aichat-status-badge">Fallback mode active</span>
+          )}
+        </div>
+        <p className="aichat-status-text">
+          Fallback mode is active. This may happen due to API quota/rate limits.
+        </p>
         <div className="chat-interface">
-          <div className="chat-messages">
+          <div className="chat-messages" ref={chatMessagesRef}>
             {messages.map((message) => (
               <div key={message.id} className={`message message-${message.type}`}>
                 <div className="message-bubble">
@@ -108,7 +116,6 @@ export default function AIChat() {
                 </div>
               </div>
             )}
-            <div ref={messagesEndRef} />
           </div>
 
           <form className="chat-input-area" onSubmit={handleSendMessage}>

@@ -1,0 +1,163 @@
+[
+  {
+    "id": "profile-summary",
+    "title": "Profile Summary",
+    "content": "Sameer Arora is an AI and Machine Learning engineer focused on practical GenAI systems, RAG workflows, and production-ready ML solutions.",
+    "tags": ["about", "summary", "profile"],
+    "metadata": { "source": "resume", "section": "career-objective" }
+  },
+  {
+    "id": "contact-details",
+    "title": "Contact Details",
+    "content": "Email: sameerar.001@gmail.com | Phone: (+91) 94160-63952 | LinkedIn: www.linkedin.com/in/sameerar01 | GitHub: github.com/5AMEER",
+    "tags": ["contact", "email", "phone", "linkedin", "github"],
+    "metadata": { "source": "resume", "section": "header" }
+  },
+  {
+    "id": "education-mtech",
+    "title": "Education - Integrated B.Tech + M.Tech (AI & ML)",
+    "content": "Integrated Bachelor and Master of Technology in Artificial Intelligence and Machine Learning from Amity University, Gurugram, Haryana with GPA 8.65/10.",
+    "tags": ["education", "degree", "ai", "ml", "amity"],
+    "metadata": { "source": "resume", "section": "education", "period": "Jul 2019 - Jun 2024" }
+  },
+  {
+    "id": "education-class12",
+    "title": "Education - Class XII",
+    "content": "Senior Secondary (CBSE, Science Non-Medical) from Cambridge School, Rewari with 74.6 percent.",
+    "tags": ["education", "school", "class-12", "cbse"],
+    "metadata": { "source": "resume", "section": "education", "period": "2018-2019" }
+  },
+  {
+    "id": "education-class10",
+    "title": "Education - Class X",
+    "content": "Matriculation (CBSE) from Cambridge School, Rewari with GPA 10/10.",
+    "tags": ["education", "school", "class-10", "cbse"],
+    "metadata": { "source": "resume", "section": "education", "period": "2016-2017" }
+  },
+  {
+    "id": "skills-core",
+    "title": "Core Technical Skills",
+    "content": "Python, Machine Learning, TensorFlow, GCP, Computer Vision, MCP, RAG, Docker, Kubernetes, LangChain, LangGraph, Langfuse, GenAI, PyTorch, and Vibe Coding.",
+    "tags": ["skills", "python", "genai", "rag", "llm", "docker", "kubernetes"],
+    "metadata": { "source": "resume", "section": "skills" }
+  },
+  {
+    "id": "skills-additional",
+    "title": "Additional Competencies",
+    "content": "Problem solving, technical mentorship, communication, decision making, and analysis.",
+    "tags": ["skills", "soft-skills", "mentorship"],
+    "metadata": { "source": "resume", "section": "skills" }
+  },
+  {
+    "id": "experience-tcs-role",
+    "title": "Work Experience - TCS",
+    "content": "Machine Learning Engineer at Tata Consultancy Services, Hyderabad, from May 2025 to present, contributing to core GenAI and client-facing RAG/LLM solutions.",
+    "tags": ["experience", "tcs", "ml-engineer", "genai", "rag"],
+    "metadata": { "source": "resume", "section": "work-experience", "period": "May 2025 - present" }
+  },
+  {
+    "id": "experience-tcs-impact",
+    "title": "TCS Impact Highlights",
+    "content": "Built Langfuse observability dashboards and traced 120+ observations, identified and removed 30+ redundant LLM calls, improving efficiency and reducing costs.",
+    "tags": ["experience", "langfuse", "observability", "cost-optimization"],
+    "metadata": { "source": "resume", "section": "work-experience" }
+  },
+  {
+    "id": "experience-tcs-clinical",
+    "title": "Clinical AI Pipeline",
+    "content": "Engineered an LLM-driven pipeline mapping patient responses to ADDA questionnaires and automated clinical diagnostic report generation.",
+    "tags": ["experience", "healthcare", "llm", "automation"],
+    "metadata": { "source": "resume", "section": "work-experience" }
+  },
+  {
+    "id": "experience-hackathon",
+    "title": "Hackathon Recognition",
+    "content": "Runner-up at TCS AI Friday Hackathon for building a RAG pipeline to detect copyright infringement and policy violations in media content.",
+    "tags": ["achievement", "hackathon", "rag", "copyright"],
+    "metadata": { "source": "resume", "section": "work-experience" }
+  },
+  {
+    "id": "experience-kalvium",
+    "title": "Technical Mentor - Kalvium",
+    "content": "Mentored 107 first-year undergraduate students in programming fundamentals, AI concepts, and problem-solving between July and October 2024.",
+    "tags": ["experience", "mentorship", "teaching", "kalvium"],
+    "metadata": { "source": "resume", "section": "work-experience", "period": "Jul 2024 - Oct 2024" }
+  },
+  {
+    "id": "experience-esskay",
+    "title": "ML Consultant - Ess Kay Associates",
+    "content": "Built a loan eligibility classification model using around 180 real-world applicant profiles and helped shift the firm toward ML-powered R&D decisions.",
+    "tags": ["experience", "consulting", "classification", "finance"],
+    "metadata": { "source": "resume", "section": "work-experience", "period": "Jan 2024 - Jun 2024" }
+  },
+  {
+    "id": "project-erp",
+    "title": "Project - AI-powered ERP System",
+    "content": "Built an enterprise full-stack ERP with advanced billing, inventory, financial reporting, WhatsApp marketing automation, and LangChain-based RAG for conversational BI.",
+    "tags": ["project", "erp", "full-stack", "rag", "langchain"],
+    "metadata": { "source": "resume", "section": "projects" }
+  },
+  {
+    "id": "project-mcp-team-manager",
+    "title": "Project - AI Team Manager using MCP",
+    "content": "Implemented an MCP server for leave management, approvals, balance checks, task assignment, progress tracking, and push notifications via AI clients.",
+    "tags": ["project", "mcp", "claude", "workflow", "team-management"],
+    "metadata": { "source": "resume", "section": "projects" }
+  },
+  {
+    "id": "project-spotify",
+    "title": "Project - Spotify Playlist Generator",
+    "content": "Developed a web scraping workflow with Python and BeautifulSoup and integrated Spotify API with robust exception handling for unavailable tracks.",
+    "tags": ["project", "spotify", "api", "web-scraping", "python"],
+    "metadata": { "source": "resume", "section": "projects" }
+  },
+  {
+    "id": "publication-innocomp",
+    "title": "Publication - IEEE INNOCOMP 2024",
+    "content": "Published work on interpretable features of YOLOv8 for weapon detection in IEEE International Conference on Emerging Innovations and Advanced Computing, September 2024.",
+    "tags": ["publication", "ieee", "yolo", "computer-vision"],
+    "metadata": { "source": "resume", "section": "publications" }
+  },
+  {
+    "id": "publication-acm",
+    "title": "Publication - ACM ICIMMI 2024",
+    "content": "Published The All-Seeing Eye for constructive weapon detection using YOLOv8 object detection model in ACM International Conference on Information Management and Machine Intelligence, May 2024.",
+    "tags": ["publication", "acm", "yolo", "research"],
+    "metadata": { "source": "resume", "section": "publications" }
+  },
+  {
+    "id": "patent-weapon-detection",
+    "title": "Patent Publication",
+    "content": "Advanced Gun and Weapon Detection System with Optimizer Impact Analysis, patent publication number 202411072702 A, available on 11 October 2024.",
+    "tags": ["patent", "research", "computer-vision", "weapon-detection"],
+    "metadata": { "source": "resume", "section": "publications" }
+  },
+  {
+    "id": "certifications",
+    "title": "Certifications",
+    "content": "Completed Model Context Protocol (Udemy, Nov 2025), Prompt Engineering for AI Bootcamp (Oct 2025), and TensorFlow Developer Certificate Training (Udemy, Jul 2023).",
+    "tags": ["certifications", "mcp", "prompt-engineering", "tensorflow"],
+    "metadata": { "source": "resume", "section": "certifications" }
+  },
+  {
+    "id": "leadership-shakti",
+    "title": "Leadership - SHAKTI Club",
+    "content": "Served as Director of Media and Operations (2022-2024), led social strategy, content operations, and collaboration for inter-college events.",
+    "tags": ["leadership", "operations", "media", "university"],
+    "metadata": { "source": "resume", "section": "leadership" }
+  },
+  {
+    "id": "leadership-badminton",
+    "title": "Leadership - Badminton Team Captain",
+    "content": "Captain of university badminton team in 2023, led trials, match strategy, and team coordination contributing to runner-up finishes in inter-college competitions.",
+    "tags": ["leadership", "sports", "badminton", "captain"],
+    "metadata": { "source": "resume", "section": "leadership" }
+  },
+  {
+    "id": "assistant-scope",
+    "title": "Stella Assistant Scope",
+    "content": "Stella is Sameer’s portfolio AI assistant for answering questions on profile, contact, experience, projects, skills, publications, and career achievements.",
+    "tags": ["assistant", "scope", "stella"],
+    "metadata": { "source": "portfolio", "section": "assistant" }
+  }
+]
