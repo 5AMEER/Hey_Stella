@@ -1,11 +1,118 @@
 import { useState, useRef, useEffect } from 'react'
 import './AIChat.css'
+import stellaKnowledge from '../data/stellaKnowledge.json'
 
-const STATIC_RESPONSES = [
-  'I am in fallback mode right now and could not fetch a response this time. Please try again in a moment.',
-  'I am using local profile context only. I could not process that request just now—please retry.',
-  'Something interrupted my local response flow. Please ask again, and I will try immediately.'
-]
+const STOP_WORDS = new Set([
+  'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'how', 'i',
+  'in', 'is', 'it', 'of', 'on', 'or', 'that', 'the', 'to', 'was', 'what',
+  'when', 'where', 'who', 'why', 'with', 'you', 'your'
+])
+
+const CONTACT_KEYWORDS = ['contact', 'email', 'phone', 'linkedin', 'github']
+
+function normalizeText(text = '') {
+  return text.toLowerCase().replace(/[^a-z0-9\s]/g, ' ')
+}
+
+function tokenize(text = '') {
+  return normalizeText(text)
+    .split(/\s+/)
+    .map((word) => word.trim())
+    .filter((word) => word.length > 1 && !STOP_WORDS.has(word))
+}
+
+function hasAnyKeyword(text, keywords) {
+  const normalized = normalizeText(text)
+  return keywords.some((keyword) => normalized.includes(keyword))
+}
+
+function getSearchableText(chunk) {
+  const tagsText = Array.isArray(chunk?.tags) ? chunk.tags.join(' ') : ''
+  const metadataText = chunk?.metadata && typeof chunk.metadata === 'object'
+    ? Object.values(chunk.metadata).join(' ')
+    : ''
+  return `${chunk?.title || ''} ${chunk?.content || ''} ${tagsText} ${metadataText}`
+}
+
+function getTopContext(query, limit = 4) {
+  const queryTokens = tokenize(query)
+  const isContactIntent = hasAnyKeyword(query, CONTACT_KEYWORDS)
+
+  if (!queryTokens.length) {
+    return []
+  }
+
+  return stellaKnowledge
+    .map((chunk) => {
+      const chunkTokens = new Set(tokenize(getSearchableText(chunk)))
+      let score = 0
+
+      for (const token of queryTokens) {
+        if (chunkTokens.has(token)) {
+          score += 1
+        }
+      }
+
+      if (isContactIntent && Array.isArray(chunk?.tags) && chunk.tags.includes('contact')) {
+        score += 3
+      }
+
+      return {
+        ...chunk,
+        score
+      }
+    })
+    .filter((chunk) => chunk.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+}
+
+function buildClientFallbackResponse(question) {
+  const contextChunks = getTopContext(question)
+  const isContactIntent = hasAnyKeyword(question, CONTACT_KEYWORDS)
+
+  if (isContactIntent) {
+    const combined = contextChunks.map((chunk) => getSearchableText(chunk)).join(' ')
+    const email = combined.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i)?.[0]
+    const rawPhone = combined.match(/\+?\d[\d\s()-]{8,}\d/)?.[0]
+    const phone = rawPhone
+      ? rawPhone.replace(/[^\d+\s-]/g, '').replace(/\s+/g, ' ').trim()
+      : null
+    const linkedin = combined.match(/(?:https?:\/\/)?(?:www\.)?linkedin\.com\/[^\s]+/i)?.[0]
+    const github = combined.match(/(?:https?:\/\/)?(?:www\.)?github\.com\/[^\s]+/i)?.[0]
+
+    const lines = []
+    if (email) lines.push(`- Email: ${email}`)
+    if (phone) lines.push(`- Phone: ${phone}`)
+    if (linkedin) lines.push(`- LinkedIn: ${linkedin}`)
+    if (github) lines.push(`- GitHub: ${github}`)
+
+    if (lines.length) {
+      return [
+        'I’m in fallback mode and answering from local profile data.',
+        '',
+        'Here are Sameer\'s contact details:',
+        ...lines
+      ].join('\n')
+    }
+  }
+
+  if (!contextChunks.length) {
+    return [
+      'I’m in fallback mode and answering from local profile data.',
+      '',
+      'I couldn\'t find a strong match for that question.',
+      'Try asking about contact, skills, experience, projects, or publications.'
+    ].join('\n')
+  }
+
+  const top = contextChunks[0]
+  return [
+    'I’m in fallback mode and answering from local profile data.',
+    '',
+    `${top.title}: ${String(top.content || '').replace(/\s+/g, ' ').trim()}`
+  ].join('\n')
+}
 
 export default function AIChat() {
   const apiBase = import.meta.env.VITE_API_URL || '/api'
@@ -63,7 +170,7 @@ export default function AIChat() {
       }
 
       const data = await response.json()
-      const aiResponse = data?.response || 'I could not generate a response right now.'
+      const aiResponse = data?.response || buildClientFallbackResponse(input)
 
       const assistantMessage = {
         id: Date.now() + 1,
@@ -73,11 +180,11 @@ export default function AIChat() {
       setMessages(prev => [...prev, assistantMessage])
     } catch (error) {
       console.error('Chat Error:', error)
-      const randomResponse = STATIC_RESPONSES[Math.floor(Math.random() * STATIC_RESPONSES.length)]
+      const localResponse = buildClientFallbackResponse(input)
       setMessages(prev => [...prev, {
         id: Date.now() + 1,
         type: 'assistant',
-        content: randomResponse
+        content: localResponse
       }])
     } finally {
       setLoading(false)
