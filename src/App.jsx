@@ -6,6 +6,7 @@ import AIChat from './components/AIChat'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import Carousel from './components/Carousel'
 import './App.css'
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
       <AIChat />
       <Skills />
       <Projects />
+      <Carousel />
       <Contact />
     </div>
   )

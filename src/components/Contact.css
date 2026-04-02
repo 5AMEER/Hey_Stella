@@ -101,6 +101,18 @@
   box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.3);
 }
 
+.form-group .input-error {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+.form-error {
+  margin: 2px 0 0;
+  color: #ff9f9f;
+  font-size: 13px;
+  font-family: var(--font-mono);
+}
+
 .contact-form .btn {
   align-self: flex-start;
   margin-top: 10px;
