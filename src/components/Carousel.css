@@ -9,6 +9,7 @@
   align-items: center;
   white-space: nowrap;
   width: max-content;
+  line-height: 0;
   animation: carousel-scroll 55s linear infinite;
 }
 
@@ -17,6 +18,7 @@
 }
 
 .carousel-image {
+  display: block;
   height: 180px;
   width: auto;
   object-fit: cover;
@@ -37,6 +39,6 @@
 
 @media (max-width: 768px) {
   .carousel-image {
-    height: 120px;
+    height: clamp(96px, 22vw, 130px);
   }
 }

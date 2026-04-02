@@ -112,8 +112,26 @@ body {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .section-title {
+    white-space: normal;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
   .section-title::after {
     width: 100px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .section-title::after {
+    width: 0;
+    display: none;
   }
 }
 
