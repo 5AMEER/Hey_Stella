@@ -191,6 +191,28 @@ https://5ameer.github.io/Hey_Stella/
 > Note: GitHub Pages is static hosting. `local-api-server.mjs` does **not** run there.
 > Stella works on Pages via built-in client-side fallback retrieval.
 
+## Recent Updates
+
+### April 2026
+
+- **Photo Carousel**: Added a stunning photo album animation with two rows of images scrolling in opposite directions. It’s like a visual treadmill for your memories — but way cooler.
+- **Contact Form Upgrade**: Now with built-in validation! No more sending emails with blank fields or typos (unless you really want to). Plus, the "Send Message" button now opens your email app with the subject and message prefilled. If your email app doesn’t cooperate, we’ve got a friendly fallback message to save the day.
+
+## How to Use
+
+1. Clone the repo (don’t worry, it’s not a horror movie).
+2. Run `npm install` — because dependencies are like coffee for your code.
+3. Start the dev server with `npm run dev` and watch the magic happen.
+4. Build and deploy with `npm run deploy` — because your portfolio deserves to shine on GitHub Pages.
+
+## Contributing
+
+Want to contribute? Great! Just fork the repo, make your changes, and submit a pull request. Bonus points if you include a pun in your commit message.
+
+## License
+
+MIT License — because sharing is caring.
+
 ## Troubleshooting
 
 ### 1) Stella not answering on Pages
@@ -215,7 +237,3 @@ Expected behavior by design in current architecture.
 
 - `.env` is ignored and should never be committed.
 - No external LLM API calls are required in current always-on fallback mode.
-
-## License
-
-This project is open source and available under the MIT License.
