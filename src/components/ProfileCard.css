@@ -37,6 +37,24 @@
   touch-action: none;
 }
 
+.pc-trail-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.pc-trail-symbol {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Mono', Menlo, monospace;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.7));
+  animation: pc-trail-fade var(--life, 1400ms) ease-out forwards;
+}
+
 .pc-behind {
   position: absolute;
   inset: 0;
@@ -64,6 +82,7 @@
   aspect-ratio: 0.718;
   border-radius: var(--card-radius);
   position: relative;
+  z-index: 1;
   background-blend-mode: color-dodge, normal, normal, normal;
   animation: glow-bg 12s linear infinite;
   box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px)
@@ -73,6 +92,22 @@
   background: rgba(0, 0, 0, 0.9);
   backface-visibility: hidden;
   overflow: hidden;
+}
+
+@keyframes pc-trail-fade {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.9);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--dx, 0px), var(--dy, -24px), 0) scale(1.1);
+  }
 }
 
 .pc-card:hover,

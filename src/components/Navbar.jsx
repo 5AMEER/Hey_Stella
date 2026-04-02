@@ -1,50 +1,75 @@
-import { useState } from 'react'
-import { FaBars, FaTimes } from 'react-icons/fa'
+import { useRef, useCallback } from 'react'
+import { FaHome, FaUser, FaCode, FaFolderOpen, FaEnvelope } from 'react-icons/fa'
 import './Navbar.css'
 
-const Navbar = ({ activeSection }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+const navItems = [
+  { id: 'home', label: 'Home', icon: <FaHome /> },
+  { id: 'about', label: 'About', icon: <FaUser /> },
+  { id: 'skills', label: 'Skills', icon: <FaCode /> },
+  { id: 'projects', label: 'Projects', icon: <FaFolderOpen /> },
+  { id: 'contact', label: 'Contact', icon: <FaEnvelope /> },
+]
 
-  const scrollToSection = (sectionId) => {
+const Navbar = ({ activeSection }) => {
+  const dockRef = useRef(null)
+
+  const scrollToSection = useCallback((sectionId) => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
-      setIsMenuOpen(false)
     }
-  }
+  }, [])
 
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' },
-  ]
+  const handleMouseMove = useCallback((event) => {
+    const dock = dockRef.current
+    if (!dock) return
+
+    const mouseY = event.clientY
+    const maxDistance = 140
+    const items = dock.querySelectorAll('.dock-item')
+
+    items.forEach((item) => {
+      const rect = item.getBoundingClientRect()
+      const itemCenterY = rect.top + rect.height / 2
+      const distance = Math.abs(mouseY - itemCenterY)
+      const ratio = Math.max(0, 1 - distance / maxDistance)
+      const scale = 1 + ratio * 1.6
+      item.style.setProperty('--scale', scale.toFixed(2))
+    })
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    const dock = dockRef.current
+    if (!dock) return
+
+    const items = dock.querySelectorAll('.dock-item')
+    items.forEach((item) => {
+      item.style.setProperty('--scale', '1')
+    })
+  }, [])
 
   return (
-    <nav className="navbar">
-      <div className="nav-container">
-        <div className="nav-logo" onClick={() => scrollToSection('home')}>
-          yo
-        </div>
-        <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToSection(item.id)
-              }}
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-        <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <FaTimes /> : <FaBars />}
-        </div>
+    <nav className="navbar-dock">
+      <div
+        ref={dockRef}
+        className="dock"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        {navItems.map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            className={`dock-item ${activeSection === item.id ? 'active' : ''}`}
+            onClick={(e) => {
+              e.preventDefault()
+              scrollToSection(item.id)
+            }}
+          >
+            <span className="dock-icon">{item.icon}</span>
+            <span className="dock-label">{item.label}</span>
+          </a>
+        ))}
       </div>
     </nav>
   )
