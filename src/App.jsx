@@ -47,7 +47,9 @@ function App() {
       <Navbar activeSection={activeSection} />
       <Hero />
       <About />
-      <AIChat />
+      <div id="stella">
+        <AIChat />
+      </div>
       <Skills />
       <Projects />
       <Carousel />

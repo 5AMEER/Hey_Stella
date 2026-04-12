@@ -1,10 +1,12 @@
 import { useRef, useCallback } from 'react'
-import { FaHome, FaUser, FaCode, FaFolderOpen, FaEnvelope } from 'react-icons/fa'
+import { FaHome, FaUser, FaCode, FaFolderOpen, FaEnvelope, FaStar } from 'react-icons/fa'
+import { RiVoiceAiFill } from "react-icons/ri";
 import './Navbar.css'
 
 const navItems = [
   { id: 'home', label: 'Home', icon: <FaHome /> },
   { id: 'about', label: 'About', icon: <FaUser /> },
+  { id: 'stella', label: 'Stella', icon: <RiVoiceAiFill /> },
   { id: 'skills', label: 'Skills', icon: <FaCode /> },
   { id: 'projects', label: 'Projects', icon: <FaFolderOpen /> },
   { id: 'contact', label: 'Contact', icon: <FaEnvelope /> },
